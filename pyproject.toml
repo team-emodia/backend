@@ -23,6 +23,7 @@ scipy = "^1.16.2"
 fastapi = "^0.117.1"
 uvicorn = "^0.37.0"
 python-socketio = "^5.13.0"
+pylint = "^3.3.9"
 
 
 [tool.black]
