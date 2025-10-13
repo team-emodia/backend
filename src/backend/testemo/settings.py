@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-f3=zlwx&q8d%h1dea(u#(lzyt%!1-pqv(k8cc(@zvaoq!gv!1d
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']  # 개발 환경용 - 모든 호스트 허용
 
 
 # Application definition
@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     "rest_framework_simplejwt",
+    'django_extensions',  # HTTPS 지원
     'emodia',
     'users',
     'corsheaders',
@@ -104,7 +105,7 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
     },
     {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+        'NAME': 'django.contrib.auth.password_validation.c',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
@@ -126,7 +127,14 @@ SIMPLE_JWT = {
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
+    'http://172.16.30.146:3000',
+    'https://172.16.30.146:3000',  # HTTPS 추가
 ]
+
+# HTTPS 개발 환경 설정
+CSRF_COOKIE_SECURE = False  # 개발 환경에서는 False
+SESSION_COOKIE_SECURE = False  # 개발 환경에서는 False
+SECURE_SSL_REDIRECT = False  # 개발 환경에서는 False (자동 리다이렉트 비활성화)
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.0/topics/i18n/
